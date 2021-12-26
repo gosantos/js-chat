@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', (req, res) => {
+app.get('/', (_, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
@@ -19,3 +19,5 @@ io.on('connection', (socket) => {
 http.listen(port, () => {
   console.log(`Socket.IO server running at http://localhost:${port}/`);
 });
+
+app.get('/favicon.ico', (_, res) => res.status(204));
